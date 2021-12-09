@@ -20,7 +20,7 @@ class UserService{
             'Authorization': 'Basic' + ' ' + Buffer.from(usuario.login + ':' + usuario.senha, 'utf8').toString('base64')
         }
 
-        return axios.get(API_URL + 'login', {headers: headers}).then(response => {
+        return axios.get(API_URL + 'usuario/login', {headers: headers}).then(response => {
             response.data.senha = usuario.senha;
             localStorage.setItem('currentUser', JSON.stringify(response.data));
             currentUserSubject.next(response.data);
@@ -28,7 +28,7 @@ class UserService{
     }
 
     logOut(){
-        return axios.post(API_URL + 'logout', {}).then(()=>{
+        return axios.post(API_URL + 'usuario/logout', {}).then(()=>{
             localStorage.removeItem('currentUser');
             currentUserSubject.next(null);
         })
@@ -36,11 +36,11 @@ class UserService{
     }
 
     register(usuario){
-        return axios.post(API_URL, usuario);
+        return axios.post(API_URL + 'usuario', usuario);
     }
 
     changeRole(login, role){
-        return axios.put(API_URL + login + 'change' + role, {});
+        return axios.put(API_URL + 'usuario' + login + 'change' + role, {});
     }
 
 
