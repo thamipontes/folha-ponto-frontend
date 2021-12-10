@@ -14,9 +14,8 @@ function LandingPage(){
                 </div>
                 <img src={landingImg} alt="Imagem" className="hero-image"/>
                 <div className="buttons-container">
-                    <Link to="/login" className="login-button">
-                        <img src={givenClassesIcon} alt="Login"/>
-                        Login
+                    <Link to="/batidas" className="batida-button">
+                        Registrar Batida
                     </Link>                    
                 </div>
             </div>

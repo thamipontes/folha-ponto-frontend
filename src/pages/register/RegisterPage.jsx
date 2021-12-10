@@ -108,7 +108,7 @@ class RegisterPage extends Component{
 
                         <div className="form-group">
                             <label htmlFor="senha"> Senha </label>
-                            <input type="text"
+                            <input type="password"
                             className="form-control"
                             name="senha"
                             required

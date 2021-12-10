@@ -15,6 +15,7 @@ import AuthGuard from './guards/AuthGuard.jsx';
 
 import { Role } from './models/role'
 import userService from './service/user.service';
+import { PageHeader } from './components/pageHeader/PageHeader';
 
 function Content() {
   const history = useHistory();
@@ -48,7 +49,7 @@ function Content() {
               Java.React.Socorro
             </a>
                 <li className="navbar-item">
-                  <a className="nav-link" href="/home">
+                  <a className="nav-link" href="/landing">
                     <span className="fa fa-home"/>
                     Home
                   </a>
@@ -106,8 +107,8 @@ function Content() {
 function App(){
   return (
     <Router>
-        <Content />
-        <div className="container">
+        <PageHeader></PageHeader>
+        <div className="page-container">
         <Switch>
             <Route exact path="/" component={LoginPage}/>
           <Route exact path = "/login" component={LoginPage}/>

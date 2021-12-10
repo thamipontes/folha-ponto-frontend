@@ -5,6 +5,7 @@ import userService from './../../service/user.service'
 
 /**Importando as imagens*/
 import backIcon from '../../assets/images/icons/back.svg';
+import landingImg from '../../assets/images/ATA.png';
 
 const PageHeader = (props) => {
 
@@ -33,55 +34,65 @@ const PageHeader = (props) => {
     return(
         <div>
             {usuarioAtual &&
-                <header className="page-header">
-                    <div className="top-bar-container">
-                        <Link to="/">
-                            <img src={backIcon} alt="Voltar"/>
-                        </Link>
-                    </div>
+        <header className="page-header"> 
+            <div className="top-bar-container">
+                <a href="https://github.com/thamipontes/folha-ponto-frontend">
+                     <img src={landingImg} className="App-logo" alt="logo"/>
+                        Java.React.Socorro
+                </a>
 
-                    <div className="header-content">
-                        <li className="nav-item">
-                            <a className="nav-link" href="/profile">
-                                <span className="fa fa-user"/>
-                                    {usuarioAtual.nomeCompleto}
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" onClick={() => lougout()}>
-                                <span className="fa fa-sign-out"/>
-                                    LogOut
-                            </a>
-                        </li>
-                    </div>         
-                </header>
+                <div className="header-item">
+                    <a href="/landing">
+                        <span className="fa fa-home"/>
+                            Home
+                    </a>
+                </div>
+
+                <div className="header-item">
+                    <a href="/profile">
+                        <span className="fa fa-user"/>
+                            {usuarioAtual.nomeCompleto}
+                    </a>
+                </div>
+
+                <div className="header-item">
+                    <a href="#" onClick={() => lougout()}>
+                        <span className="fa fa-sign-out"/>
+                            LogOut
+                    </a>
+                </div>
+                <Link to="/">
+                    <img src={backIcon} alt="Voltar"/>
+                </Link>
+            </div>       
+        </header>
             }
 
             <div>
                 {!usuarioAtual &&
-                    <header className="page-header">
-                        <div className="top-bar-container">
-                            <Link to="/">
-                                <img src={backIcon} alt="Voltar"/>
-                            </Link>
-                        </div>
+                    <header className="page-header"> 
+                    <div className="top-bar-container">
+                        <a href="https://github.com/thamipontes/folha-ponto-frontend">
+                             <img src={landingImg} className="App-logo" alt="logo"/>                          
+                        </a>
 
-                        <div className="header-content">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/register">
-                                    <span className="fa fa-user-plus"/>
-                                        &nbsp;
-                                        Register
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/login">
-                                    <span className="fa fa-sign-in"/>
-                                        Login
-                                </a>
-                            </li>
-                        </div>         
-                    </header>                
+                        <div className="login-header-button">
+                            <a href="/login">
+                                <span className="fa fa-user"/>
+                                &nbsp;
+                                    Login
+                            </a>
+                        </div>
+        
+                        <div className="">
+                            <a href="/register">
+                                <span className="fa fa-plus"/>
+                                &nbsp;
+                                    Registrar
+                            </a>
+                        </div>
+                    </div>       
+                </header>         
                 }
             </div>  
 
