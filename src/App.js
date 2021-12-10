@@ -78,15 +78,6 @@ function Content() {
               <img src={landingImg} className="App-logo" alt="logo"/>
               Java.React.Socorro
             </a>
-            <div className="navbar-nav mr-auto">
-              <li className="navbar-item">
-                <a className="nav-link" href="/home">
-                  <span className="fa fa-home"/>
-                  Home
-                </a>
-              </li>
-            </div>
-
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <a className="nav-link" href="/register">
