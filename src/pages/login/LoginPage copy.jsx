@@ -1,7 +1,9 @@
 import {Component, useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { PageHeader } from '../../components/pageHeader/PageHeader';
 import { Usuario } from '../../models/usuario';
-import UserService from './../../service/user.service'
+import UserService from './../../service/user.service';
+import '../../components/pageHeader/PageHeader' 
 import './styles.css';
 
 
@@ -15,12 +17,9 @@ const LoginPage = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
 
 
-
-
-
     useEffect(() => {
         if(UserService.currentUserValue){
-            props.history.push('/home');
+            props.history.push('/landing');
             return;
         }
     }, [])
@@ -52,7 +51,7 @@ const LoginPage = (props) => {
         UserService.login(usuario)
         .then(
             data => {
-                props.history.push('/home');
+                props.history.push('/landing');
         }, error => {
                 console.log(error);
                 setErrorMessage('Not Valid');
@@ -94,7 +93,7 @@ const LoginPage = (props) => {
 
                     <div className="form-group">
                         <label htmlFor="senha"> Senha </label>
-                        <input type="text"
+                        <input type="password"
                         className="form-control"
                         name="senha"
                         required
@@ -105,18 +104,16 @@ const LoginPage = (props) => {
                             Senha Invalida
                         </div>
                     </div>
-
-                    <button className="btn btn-primary btn-block"
+                    <div className="buttons-container">
+                    <button className="btn btn-block"
                             onClick={() => setSubmitted(true)}
                             disabled={loading}
                     >
                         Login
                     </button>
-
+                    </div>
                 </form>
-
-                <Link to="/register" className="btn btn-link" style={{color: 'darkgray'}}>Registrar</Link>
-
+                <Link to="/register" className="btn btn-link button-reg">Registrar</Link>
             </div>
         </div>
     );

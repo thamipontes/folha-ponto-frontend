@@ -1,14 +1,14 @@
-import logo from './logo.svg';
-
 import './App.css';
 import {Component, useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import { LoginPage } from './pages/login/LoginPage copy';
 import { RegisterPage } from './pages/register/RegisterPage';
 import { ProfilePage } from './pages/Profile/ProfilePage';
-import { LandingPage } from './pages/landing/LandingPage copy';
+import { LandingPage } from './pages/landing/LandingPage';
 import { NotFound } from './pages/errors/NotFound';
 import { Unauthorized } from './pages/errors/Unauthorized';
+import landingImg from './assets/images/ATA.png';
+
 
 import AuthGuard from './guards/AuthGuard.jsx';
 
@@ -43,33 +43,28 @@ function Content() {
       <div>
         {usuarioAtual &&
           <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <a className="navbar-brand" href="https://reactjs.org">
-              <img src={logo} className="App-logo" alt="logo"/>
-              React Teste
+            <a className="navbar-brand" href="https://github.com/thamipontes/folha-ponto-frontend">
+              <img src={landingImg} className="App-logo" alt="logo"/>
+              Java.React.Socorro
             </a>
-            <div className="navbar-nav mr-auto">
-              <li className="navbar-item">
-                <a className="nav-link" href="/home">
-                  <span className="fa fa-home"/>
-                  Home
-                </a>
-              </li>
-            </div>
-
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="/profile">
-                  <span className="fa fa-user"/>
-                  {usuarioAtual.nomeCompleto}
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => lougout()}>
-                  <span className="fa fa-sign-out"/>
-                  LogOut
-                </a>
-              </li>
-            </div>
+                <li className="navbar-item">
+                  <a className="nav-link" href="/home">
+                    <span className="fa fa-home"/>
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/profile">
+                    <span className="fa fa-user"/>
+                    {usuarioAtual.nomeCompleto}
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#" onClick={() => lougout()}>
+                    <span className="fa fa-sign-out"/>
+                    LogOut
+                  </a>
+                </li>
           </nav>
         
         }
@@ -78,10 +73,10 @@ function Content() {
 
       <div>
         {!usuarioAtual &&
-          <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <nav className="navbar navbar-expand navbar-default">
             <a className="navbar-brand" href="https://reactjs.org">
-              <img src={logo} className="App-logo" alt="logo"/>
-              React Teste
+              <img src={landingImg} className="App-logo" alt="logo"/>
+              Java.React.Socorro
             </a>
             <div className="navbar-nav mr-auto">
               <li className="navbar-item">
@@ -126,14 +121,11 @@ function App(){
             <Route exact path="/" component={LoginPage}/>
           <Route exact path = "/login" component={LoginPage}/>
             <Route exact path="/register" component={RegisterPage}/>
+            <Route exact path="/landing" component={LandingPage}/>
             <AuthGuard 
               path= "/profile" 
               roles={[Role.USER, Role.ADMIN]} 
               component={ProfilePage}/>
-            <AuthGuard 
-              path= "/landing" 
-              roles={[Role.ADMIN]} 
-              component={LandingPage}/>
             <Route exact path="/404"ccomponent={NotFound}/>
             <Route exact path="/401" component={Unauthorized}/>
             <Redirect from="*" to ="/404"/>

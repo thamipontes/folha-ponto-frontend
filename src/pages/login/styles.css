@@ -15,3 +15,43 @@
     font-size: 80px;
     
 }
+
+.form-container .buttons-container{
+    color: aliceblue;
+    background-color: #D88B15;
+    border: 0;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form-container .buttons-container:hover{
+    color: aliceblue;
+    background-color:  #060537;
+    border: 0;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.form-container button{
+    color: aliceblue;
+}
+
+.form-container button:hover{
+    color: aliceblue;
+}
+
+.form-container .button-reg{
+    color: #060537;
+    margin-top: -2rem;
+}
+
+.form-container i{
+    color: #060537;
+}

@@ -120,16 +120,17 @@ class RegisterPage extends Component{
                             </div>
                         </div>
 
-                        <button className="btn btn-success w-100 mt-3"
+                        <div className="buttons-container">
+                        <button className="btn btn-lock"
                             disabled={loading}
-
                         >
                             Criar
                         </button>
+                        </div>
 
                     </form>
 
-                    <Link to="/login" className="btn btn-link" style={{color: 'darkgray'}}>Login</Link>
+                    <Link to="/login" className="btn btn-link button-reg">Login</Link>
 
                 </div>
             </div>

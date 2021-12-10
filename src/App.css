@@ -2,14 +2,31 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar-default{
+  background-color: #060537;
 }
+
+a.nav-link{
+  color: aliceblue;
+}
+
+.nav-icons{
+  margin-left: 30rem;
+}
+
+a.navbar-brand{
+  color: aliceblue;
+  margin-right: 20rem;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    border-radius: 200px;
+    width: 12rem;
+    height: 50%;
+    margin-right: 5rem;
   }
 }
 
@@ -35,4 +52,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+@media (max-width: 700px) {
+
+  a.nav-link{
+    color: aliceblue;
+    display: grid;
+  }
+  
 }
