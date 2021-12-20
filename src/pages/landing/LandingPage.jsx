@@ -14,7 +14,7 @@ function LandingPage(){
                 </div>
                 <img src={landingImg} alt="Imagem" className="hero-image"/>
                 <div className="buttons-container">
-                    <Link to="/email" className="email-button">
+                    <Link to="/email">
                         Enviar Email
                     </Link>                    
                 </div>

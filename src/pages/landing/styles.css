@@ -14,24 +14,23 @@
 }
 
 .buttons-container a {
-    width: 20rem;
+    height: 4rem;
+    width: 10rem;
     border-radius: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;    
     text-decoration: none;
     background-color: #A76502;
-    transition: background-color 0.2s;  
+    transition: background-color 0.2s;
+    font-size: 1rem;  
+    font-weight: 700;
+    color: aliceblue;
 
-}
 
-a.batida-button{
-    height: 6rem;
-    color:aliceblue;
 }
 
 a.batida-button:hover{
-    height: 6rem;
     color: #060537;
     background-color: #D88B15;
 }
@@ -60,6 +59,10 @@ a.batida-button:hover{
     display: flex;
     justify-content: center;
     margin: 3.2rem 0;
+}
+
+.buttons-container a  {
+
 }
 
 /*
@@ -157,10 +160,6 @@ a.batida-button:hover{
     .buttons-container{
         grid-area: buttons;
         justify-content: flex-start;
-    }
-
-    .buttons-container a  {
-        font-size: 2.4rem;
     }
 
     .total-connections {

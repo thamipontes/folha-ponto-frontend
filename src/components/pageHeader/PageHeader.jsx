@@ -34,11 +34,10 @@
             return(
                 <div>
                     {usuarioAtual &&
-                <header className="page-header"> 
+                <header className="page-header-logado"> 
                     <div className="container">
                         <div className="row">
                         <div className="top-bar-container">
-                        <div className="col-sm"></div>
                         <div className="col-sm">
                         <div className="header-item">
                             <a href="/landing">

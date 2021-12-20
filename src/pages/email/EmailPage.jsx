@@ -37,7 +37,7 @@ const EmailPage = (props) => {
         setLoading(true);
 
         UserService.enviarEmail(email).then(data => {
-            props.history.push('/home')
+            props.history.push('/landing')
         }, error => {
             if(error?.response?.status === 409){
                 console.log(error);
