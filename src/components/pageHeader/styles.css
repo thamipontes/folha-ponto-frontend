@@ -1,7 +1,6 @@
 .page-header{
-    height: 12rem;
+    height: 15rem;
     display: flex;
-    flex-direction: row;
     background-color: #060537;
 }
 
@@ -11,15 +10,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: aliceblue;
     padding: 1.6rem;
 }
 
-
-.page-header .top-bar-container .login-header-button{
-    display: flex;
-    margin-left: 30rem;
-}
 
 /*Trata o Link como "a" normalmente no CSS*/
 .page-header .top-bar-container a{

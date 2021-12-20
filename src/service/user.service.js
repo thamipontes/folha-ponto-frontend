@@ -47,6 +47,9 @@ class UserService{
         return axios.post(API_URL + '/batidas', momento);
     }
 
+    enviarEmail(email){
+        return axios.post('https://folhaponto-mensageria.herokuapp.com/envia-email', email);
+    }
 
 }
 

@@ -7,6 +7,7 @@ import { ProfilePage } from './pages/Profile/ProfilePage';
 import { LandingPage } from './pages/landing/LandingPage';
 import { NotFound } from './pages/errors/NotFound';
 import { Unauthorized } from './pages/errors/Unauthorized';
+import {EmailPage} from './pages/email/EmailPage';
 import landingImg from './assets/images/ATA.png';
 
 
@@ -44,28 +45,44 @@ function Content() {
       <div>
         {usuarioAtual &&
           <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
             <a className="navbar-brand" href="https://github.com/thamipontes/folha-ponto-frontend">
               <img src={landingImg} className="App-logo" alt="logo"/>
               Java.React.Socorro
             </a>
-                <li className="navbar-item">
+            </div>
+            <div className="col-sm">
+            <li className="navbar-item">
                   <a className="nav-link" href="/landing">
                     <span className="fa fa-home"/>
                     Home
                   </a>
                 </li>
+                </div>
+                <div className="col-sm">
                 <li className="nav-item">
                   <a className="nav-link" href="/profile">
                     <span className="fa fa-user"/>
                     {usuarioAtual.nomeCompleto}
                   </a>
                 </li>
+                </div>
+                <div className="col-sm">
                 <li className="nav-item">
                   <a className="nav-link" href="#" onClick={() => lougout()}>
                     <span className="fa fa-sign-out"/>
                     LogOut
                   </a>
                 </li>
+                </div>
+              
+            </div>
+
+
+            </div>
+
           </nav>
         
         }
@@ -74,25 +91,25 @@ function Content() {
 
       <div>
         {!usuarioAtual &&
-          <nav className="navbar navbar-expand navbar-default">
-            <a className="navbar-brand" href="https://reactjs.org">
+          <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
+            <a className="navbar-brand" href="https://github.com/thamipontes/folha-ponto-frontend">
               <img src={landingImg} className="App-logo" alt="logo"/>
               Java.React.Socorro
             </a>
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="/register">
-                  <span className="fa fa-user-plus"/>
-                  &nbsp;
-                  Register
-                </a>
-              </li>
-              <li className="nav-item">
+            </div>
+
+            <div className="col-sm">
+            <li className="nav-item">
                 <a className="nav-link" href="/login">
                   <span className="fa fa-sign-in"/>
                   Login
                 </a>
-              </li>
+              </li>              
+            </div>
+            </div>
             </div>
           </nav>        
         }
@@ -113,6 +130,7 @@ function App(){
             <Route exact path="/" component={LoginPage}/>
           <Route exact path = "/login" component={LoginPage}/>
             <Route exact path="/register" component={RegisterPage}/>
+            <Route exact path="/email" component={EmailPage}/>
             <AuthGuard 
               path= "/landing" 
               roles={[Role.USER]} 

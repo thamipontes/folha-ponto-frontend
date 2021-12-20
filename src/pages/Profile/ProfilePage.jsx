@@ -1,44 +1,80 @@
-import {Component} from 'react';
+import {Component, useEffect, useState} from 'react';
+import {BrowserRouter as Router, Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import UserService from '../../service/user.service';
 import { Role } from '../../models/role';
+import { Usuario } from '../../models/usuario';
+import './style.css';
 
-class ProfilePage extends Component{
-    constructor(props){
-        super(props)
 
-        if(UserService.currentUserValue){
-            this.props.history.push('/login');
-            return;
-        }
+const ProfilePage = (props) => {
 
-        this.state = {
-            usuario: UserService.currentUserValue, 
-        };
-    }
+    const [usuario, setUsuario] = useState(new Usuario('', ''));
 
-    changeRole(){
-        const {usuario} = this.state;
+
+        useEffect(() => {
+            if(UserService.currentUser === null){
+                props.history.push('/login');
+                return;
+            }
+
+            UserService.currentUser.subscribe(data => {
+                setUsuario(data);
+              });
+        }, [])
+
+    const changeRole = () => {
+
         const novaRole = usuario.role === Role.ADMIN ? Role.USER : Role.ADMIN;
         UserService.changeRole(usuario.login, novaRole).then((response) => {
             usuario.role = response.data.role;
             localStorage.setItem('currentUser', JSON.stringify(usuario));
-            this.setState({usuario});
-        })
+            setUsuario(usuario);
+        });
     }
 
-    render(){
-        const {usuario} = this.state;
-        return(
-            <div className="jumbotron">
-                <h1 className="display-4"> Vamos vê se deu bom</h1>
-                <p className="lead">Fazendo teste</p>
-                <button className="btn btn-primary"
-                    onClick={() => this.changeRole()} >
-                        Mudar Role
-                </button>
+    return(
+
+        <div className="card text-center ">
+            <div className="card-body dado-card">
+            <h5 class="card-title">{usuario.nomeCompleto}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Seus Dados</h6>
+            <div>
+                <p class="card-text">{usuario.login}</p>
+                
+                <p class="card-text">{usuario.role}</p>
+                <div className="row">
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm">
+                        <button className="btn btn-primary"
+                        disabled
+                        onClick={() => changeRole()} >
+                            Mudar Role
+                    </button>
+                    </div>
+                    <div className="col-sm-1"></div>
+                    <div className="col-sm">
+                        <button className="btn btn-primary"
+                        disabled
+                        onClick={() => changeRole()} >
+                            Mudar Senha
+                    </button>
+                    </div>
+                    <div className="col-sm-3"></div>
+
+                
+                </div>
+
+
             </div>
-        );
-    }
+
+
+
+
+        </div>
+
+
+        </div>
+    );
 }
 
 export {ProfilePage};
