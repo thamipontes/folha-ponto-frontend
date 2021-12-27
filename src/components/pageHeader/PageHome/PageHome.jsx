@@ -10,7 +10,7 @@ const PageHome = (props) => {
 
         return(    
             <div>
-                    <header className="page-header"> 
+                    <header className="page-header-entrada"> 
                     <div className="container">
                     <div className="row">
                     <div className="top-header">
