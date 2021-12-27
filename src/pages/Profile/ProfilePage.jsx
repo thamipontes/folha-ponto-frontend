@@ -39,45 +39,26 @@ const ProfilePage = (props) => {
         <div className="card">
             <PageVoltar></PageVoltar>
 
-            <div className="card-body dado-card text-center">
-            <h5 class="card-title">{usuario.nomeCompleto}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Seus Dados</h6>
-            <div>
-                <p class="card-text">{usuario.login}</p>
-                
-                <p class="card-text">{usuario.role}</p>
-                <div className="row">
-                    <div className="col-sm-3"></div>
-                    <div className="col-sm">
-                        <button className="btn btn-primary"
-                        disabled
-                        onClick={() => changeRole()} >
-                            Mudar Role
-                    </button>
-                    </div>
-                    <div className="col-sm-1"></div>
-                    <div className="col-sm">
-                        <button className="btn btn-primary"
-                        disabled
-                        onClick={() => changeRole()} >
-                            Mudar Senha
-                    </button>
-                    </div>
-                    <div className="col-sm-3"></div>
-
-                
+            <div class="jumbotron">
+                <div className="container">
+                    <div className="row">
+                    <div className="col-md-12 text-center">
+                <h1 class="display-3">Olá, {usuario.nomeCompleto}</h1>
+                  <p class="lead display-6">Seu dados</p>
+                  <p class="lead">{usuario.login}</p>                
+                <p class="lead">{usuario.role}</p>
+                  <hr class="my-4"/>
+                  <p>Esta é uma zona de perigo! Mude apenas se tiver certeza!</p>
+                  <p class="lead">
+                    <a class="btn btn-danger btn-lg" href="#" role="button" onClick={() => changeRole()}>Mudar Role</a>
+                  </p> 
+                </div>    
+                </div>       
                 </div>
-
-
-            </div>
-
-
-
-
+        </div>
         </div>
 
 
-        </div>
     );
 }
 

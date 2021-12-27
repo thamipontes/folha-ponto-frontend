@@ -1,16 +1,28 @@
 
 
 .dado-card{
-    background-color: #fff8a2;
+    background-color: #E5E5E5;
     border: 1px solid gray;
     border-radius: 0.8rem;
-    margin-top: 2.4rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-top: -5rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
     overflow: hidden;
 }
 
 .dado-card p {
     justify-content: center;
     align-items: center;
+}
+
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    /* background-clip: border-box; */
+    /* border: 1px solid rgba(0,0,0,.125); */
+    border-radius: 0.25rem;
 }

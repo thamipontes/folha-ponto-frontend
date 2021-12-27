@@ -33,15 +33,15 @@ function App(){
             <Route exact path="/register" component={RegisterPage}/>
             <AuthGuard 
               path= "/batidas" 
-              roles={[Role.USER]} 
+              roles={[Role.USER, Role.ADMIN]} 
               component={Batidas}/>
             <AuthGuard 
               path= "/email" 
-              roles={[Role.USER]} 
+              roles={[Role.ADMIN]} 
               component={EmailPage}/>
             <AuthGuard 
               path= "/landing" 
-              roles={[Role.USER]} 
+              roles={[Role.USER, Role.ADMIN]} 
               component={LandingPage}/>
             <AuthGuard 
               path= "/profile" 
