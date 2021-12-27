@@ -4,6 +4,7 @@ import UserService from '../../service/user.service';
 import { Role } from '../../models/role';
 import { Usuario } from '../../models/usuario';
 import './style.css';
+import { PageVoltar } from '../../components/PageVoltar/PageVoltar';
 
 
 const ProfilePage = (props) => {
@@ -30,12 +31,15 @@ const ProfilePage = (props) => {
             localStorage.setItem('currentUser', JSON.stringify(usuario));
             setUsuario(usuario);
         });
+
     }
 
     return(
+            
+        <div className="card">
+            <PageVoltar></PageVoltar>
 
-        <div className="card text-center ">
-            <div className="card-body dado-card">
+            <div className="card-body dado-card text-center">
             <h5 class="card-title">{usuario.nomeCompleto}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Seus Dados</h6>
             <div>

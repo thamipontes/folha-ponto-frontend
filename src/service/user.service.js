@@ -40,15 +40,19 @@ class UserService{
     }
 
     changeRole(login, role){
-        return axios.put(API_URL + login + 'change' + role, {});
+        return axios.put(API_URL + 'usuario/' + login + '/change/' + role, {});
     }
 
     registrarBatida(momento){
-        return axios.post(API_URL + '/batidas', momento);
+        return axios.post(API_URL + 'batidas', momento);
     }
 
     enviarEmail(email){
         return axios.post('https://folhaponto-mensageria.herokuapp.com/envia-email', email);
+    }
+
+    enviarEmailResgitro(emailPara){
+        return axios.post('https://folhaponto-mensageria.herokuapp.com/envia-email-registro', emailPara, {headers: {"Content-Type": "text/plain"}});
     }
 
 }

@@ -37,12 +37,12 @@
                 <header className="page-header-logado"> 
                     <div className="container">
                         <div className="row">
-                        <div className="top-bar-container">
+                        <div className="top-bar-header">
                         <div className="col-sm">
                         <div className="header-item">
                             <a href="/landing">
                                 <span className="fa fa-home"/>
-                                    Home
+                                &nbsp;Home
                             </a>
                         </div>
                         </div>
@@ -50,7 +50,7 @@
                         <div className="header-item">
                             <a href="/profile">
                                 <span className="fa fa-user"/>
-                                    {usuarioAtual.nomeCompleto}
+                                &nbsp;{usuarioAtual.nomeCompleto}
                             </a>
                         </div>
                         </div>
@@ -58,7 +58,7 @@
                         <div className="header-item">
                             <a href="#" onClick={() => lougout()}>
                                 <span className="fa fa-sign-out"/>
-                                    LogOut
+                                &nbsp;LogOut
                             </a>
                         </div>
                         </div>

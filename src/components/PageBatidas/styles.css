@@ -1,34 +1,10 @@
 .page-header{
-    height: 15rem;
+    height: 10rem;
     display: flex;
     background-color: #060537;
 }
 
-.page-header-logado{
-    height: 8rem;
-    display: flex;
-    background-color: #060537;
-}
-
-.page-header-logado .top-bar-header{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.6rem;
-}
-/*Trata o Link como "a" normalmente no CSS*/
-.page-header-logado .top-bar-header a{
-    color: aliceblue;
-    text-decoration: none;
-}
-
-.page-header-logado .top-bar-header a:hover{
-    opacity: 0.6;
-}
-
-.page-header .top-bar-container{
+.page-header .top-header-batidas{
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -37,30 +13,20 @@
     padding: 1.6rem;
 }
 
-
-/*Trata o Link como "a" normalmente no CSS*/
-.page-header .top-bar-container a{
+.page-header .top-header-batidas a{
     color: aliceblue;
     text-decoration: none;
 }
 
-.page-header .top-bar-container a:hover{
+
+.page-header .top-header-batidas a:hover{
     opacity: 0.6;
-    background-color: aliceblue;
 }
 
 /*Pega a imagem que está no mesmo nivel que link, por exempo, ou seja que está apenas no
 primeiro nível do .top-bar-container*/
 .page-header .top-bar-container > img{
    
-}
-
-.page-header .header-content a{
-
-}
-
-.page-header .header-content strong{
-
 }
 
 .page-header .header-content p{
@@ -71,11 +37,6 @@ primeiro nível do .top-bar-container*/
     color: var(--color-text-in-primary);
     margin-top: 2.4rem;
 }
-
-
-
-
-
 
 
 @media(max-width: 700px){

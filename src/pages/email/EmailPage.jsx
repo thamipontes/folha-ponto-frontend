@@ -1,6 +1,6 @@
-import userEvent from '@testing-library/user-event';
 import {Component, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
+import { PageVoltar } from '../../components/PageVoltar/PageVoltar';
 import { Email } from '../../models/email';
 import UserService from '../../service/user.service'
 
@@ -53,6 +53,7 @@ const EmailPage = (props) => {
     
     return (   
             <div className="form-container">
+                <PageVoltar></PageVoltar>
                 <div className="card custom-card">
                     <div className="header-container">
                         <i className= "fa fa-paper-plane"/>
@@ -66,17 +67,6 @@ const EmailPage = (props) => {
                         noValidate
                         className={submitted ? 'was-validated' : ''}
                     >
-
-                        <div className="form-group">
-                            <label htmlFor="login"> Email </label>
-                            <input type="text"
-                            className="form-control"
-                            name="emailPara"
-                            required
-                            placeholder= "Email"
-                            value = {email.emailPara}
-                            onChange = {(event => handleChange(event))}/>
-                        </div>
                       
 
                         <div className="form-group">

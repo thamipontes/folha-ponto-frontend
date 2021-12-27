@@ -1,77 +1,74 @@
-import userEvent from '@testing-library/user-event';
-import {Component} from 'react';
+import { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Usuario } from '../../models/usuario';
-import UserService from './../../service/user.service'
+import UserService from './../../service/user.service';
+import { useFormik } from "formik";
+import { useHistory } from 'react-router-dom';
+import { PageHome } from '../../components/pageHeader/PageHome/PageHome';
 
-class RegisterPage extends Component{
-    constructor(props){
-        super(props)
+
+
+const RegisterPage = (props) => {
+
+    const history = useHistory();
+
+    useEffect(() => {
         if(UserService.currentUserValue){
-            this.props.history.push('/profile');
+            history.push('/home');
             return;
         }
+    }, [])
 
-        this.state = {
-            usuario: new Usuario('', '', ''), 
-            submitted: false,
-            loading: false,
-            errorMessage: '',
-        };
-    }
+    const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    var usuario = "";
 
+    const formik = useFormik({
+        initialValues: {
+            login: "",
+            email: "", 
+            nomeCompleto: "",
+            senha: "" 
+        },
+        onSubmit: async (values) => {
 
-    handleChange(e){
-        const {name, value} = e.target;
-        const {usuario} = this.state;
-        usuario[name] = value;
-        this.setState({usuario: usuario});
-    }
+            setSubmitted(true);
+            setLoading(true);
 
-    handleRegister(e){
-        e.preventDefault();
+            usuario = ({
+                login: values.login,
+                nomeCompleto: values.nomeCompleto,
+                senha: values.senha,
+                email: values.email
+            })            
 
-        this.setState({submitted: true});
-
-        const {usuario} = this.state;
-
-        if(!usuario.login || !usuario.nomeCompleto || !usuario.senha){
-            return;
+            await UserService.register(usuario).then(data => {
+                alert('Usuário registrado com sucesso');
+                UserService.enviarEmailResgitro(usuario.email);
+                console.log(usuario.email);
+                history.push('/login');
+            }, error => {    
+                    setErrorMessage(error.response.data.mensagem);
+                    setLoading(false);    
+            })
         }
+    })
 
-        this.setState({loading: true});
-
-        UserService.register(usuario).then(data => {
-            this.props.history.push('/login')
-        }, error => {
-            if(error?.response?.status === 409){
-                this.setState({
-                    errorMessage: 'Nao pode esse login',
-                    loading: false,
-                });
-            }else{
-                this.setState({
-                    errorMessage: 'Algo errado',
-                    loading: false,
-                });
-            }
-        })
-    }
-
-    render(){
-        const {errorMessage, submitted, usuario, loading} = this.state;
-        return(
+    return(
+        
             <div className="form-container">
+                    <PageHome></PageHome>
                 <div className="card custom-card">
                     <div className="header-container">
-                        <i className= "fa fa-user"/>
+                        <i className= "fa fa-user-plus"/>
                     </div>
                     {errorMessage && <div className="alert alert-danger">
                             {errorMessage}
                         </div>
                     }
 
-                    <form onSubmit={(event) => this.handleRegister(event)}
+                    <form onSubmit={formik.handleSubmit}
                         noValidate
                         className={submitted ? 'was-validated' : ''}
                     >
@@ -83,11 +80,11 @@ class RegisterPage extends Component{
                             name="login"
                             required
                             placeholder= "Login"
-                            value = {usuario.login}
-                            onChange = {(event => this.handleChange(event))}/>
+                            value = {formik.values.login}
+                            onChange = {formik.handleChange}/>
 
                             <div className="invalid-feedback">
-                                Login Invalido
+                                Login Inválido
                             </div>
                         </div>
 
@@ -98,8 +95,23 @@ class RegisterPage extends Component{
                             name="nomeCompleto"
                             required
                             placeholder= "Nome Completo"
-                            value = {usuario.nomeCompleto}
-                            onChange = {(event => this.handleChange(event))}/>
+                            value = {formik.values.nomeCompleto}
+                            onChange = {formik.handleChange}/>
+
+                            <div className="invalid-feedback">
+                                Nome necessario
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="email"> Email </label>
+                            <input type="email"
+                            className="form-control"
+                            name="email"
+                            required
+                            placeholder= "Email"
+                            value = {formik.values.email}
+                            onChange = {formik.handleChange}/>
 
                             <div className="invalid-feedback">
                                 Nome necessario
@@ -113,8 +125,8 @@ class RegisterPage extends Component{
                             name="senha"
                             required
                             placeholder= "Senha"
-                            value = {usuario.senha}
-                            onChange = {(event => this.handleChange(event))}/>
+                            value = {formik.values.senha}
+                            onChange = {formik.handleChange}/>
                             <div className="invalid-feedback">
                                 Senha Invalida
                             </div>
@@ -136,6 +148,6 @@ class RegisterPage extends Component{
             </div>
         );
     }
-}
+
 
 export {RegisterPage};

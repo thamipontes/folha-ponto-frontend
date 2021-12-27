@@ -15,7 +15,7 @@ class NotFound extends Component{
                             404
                         </span>
                         <div className="mb-4 lead" >
-                            Nada Aqui
+                            Ainda em construção no projetinho!
                         </div>
                         <Link className="btn btn-link" to="/login"> Back Home </Link>
                     </div>

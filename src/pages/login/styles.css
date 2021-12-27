@@ -3,7 +3,7 @@
     max-width: 100%;
     padding: 40px;
     background-color: #f7f7f7;
-    margin: 50px auto 25px;
+    margin: -70px auto 25px;
 }
 
 .form-container .header-container{
@@ -49,7 +49,7 @@
 
 .form-container .button-reg{
     color: #060537;
-    margin-top: -2rem;
+    margin-top: 2rem;
 }
 
 .form-container i{

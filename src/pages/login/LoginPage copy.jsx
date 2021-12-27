@@ -5,6 +5,7 @@ import { Usuario } from '../../models/usuario';
 import UserService from './../../service/user.service';
 import '../../components/pageHeader/PageHeader' 
 import './styles.css';
+import { PageHome } from '../../components/pageHeader/PageHome/PageHome';
 
 
 
@@ -62,6 +63,7 @@ const LoginPage = (props) => {
 
     return (
         <div className="form-container">
+            <PageHome></PageHome>
             <div className="card custom-card">
                 <div className="header-container">
                     <i className= "fa fa-user"/>
